@@ -5,7 +5,7 @@ import Home from './pages/Home';
 function App() {
   return (
     <HelmetProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <Routes>
           {/* Main Landing Page Route */}
           <Route path="/" element={<Home />} />
