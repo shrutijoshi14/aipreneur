@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import "./styles/animations.css";
+
+@theme {
+  /* Typography */
+  --font-sans: 'Poppins', sans-serif;
+  --font-display: 'Poppins', sans-serif;
+
+  /* ── Logo-derived Color Palette ── */
+  --color-primary:       #1A1A1A;  /* Logo charcoal/dark */
+  --color-secondary:     #2D2D2D;  /* Slightly lighter dark */
+  --color-accent:        #CC0000;  /* Logo bold red */
+  --color-accent-hover:  #E60000;  /* Brighter red on hover */
+  --color-highlight:     #FF2222;  /* Vibrant red highlight */
+  --color-bg:            #FFFFFF;  /* Pure white */
+  --color-section-bg:    #F7F7F7;  /* Near-white section bg */
+  --color-text:          #333333;  /* Dark gray body text */
+  --color-text-light:    #666666;  /* Secondary text */
+  --color-border:        #E5E5E5;  /* Subtle borders */
+}
+
+/* ── Base Layer ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* DO NOT set heading color here — Tailwind utility classes (text-white, etc.)
+     must be able to override section-specific heading colors. */
+
+  h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  a, button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Smooth image rendering */
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111111; }
+::-webkit-scrollbar-thumb { background: #CC0000; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #E60000; }
+
+/* ── Selection color ── */
+::selection { background: #CC0000; color: #ffffff; }
