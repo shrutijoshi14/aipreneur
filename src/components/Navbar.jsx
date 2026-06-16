@@ -164,16 +164,6 @@ export default function Navbar() {
                   </a>
                 );
               })}
-              <div className="pt-4 pb-2 px-3">
-                <a
-                  href="#contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center space-x-2 bg-accent hover:bg-red-700 text-white font-bold px-4 py-3 rounded-full shadow-lg"
-                >
-                  <span>Get Consultation</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
             </div>
           </motion.div>
         )}

@@ -14,7 +14,6 @@ export default function FloatingWhatsApp() {
         <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-zinc-900 rotate-45 border-r border-t border-zinc-800"></div>
       </div>
 
-      {/* WhatsApp button — original WhatsApp green #25D366 */}
       <motion.a
         href={whatsappUrl}
         target="_blank"
@@ -22,10 +21,10 @@ export default function FloatingWhatsApp() {
         whileHover={{ scale: 1.12 }}
         whileTap={{ scale: 0.9 }}
         style={{ backgroundColor: '#25D366' }}
-        className="flex items-center justify-center w-14 h-14 rounded-full text-white shadow-xl animate-whatsapp-pulse cursor-pointer"
+        className="flex items-center justify-center w-11 h-11 md:w-14 md:h-14 rounded-full text-white shadow-xl animate-whatsapp-pulse cursor-pointer"
         aria-label="Chat with AIXPRT on WhatsApp"
       >
-        <FaWhatsapp className="w-8 h-8" />
+        <FaWhatsapp className="w-6 h-6 md:w-8 md:h-8" />
       </motion.a>
     </div>
   );
