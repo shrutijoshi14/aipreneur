@@ -5,6 +5,22 @@ import { serviceCategories } from '../data/services';
 
 export default function Services() {
   const [activeCategory, setActiveCategory] = useState(serviceCategories[0].id);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const visibleIds = [
+    'ai-automation-tools',
+    'custom-gpt',
+    'digital-products',
+    'website-software-dev',
+    'digital-marketing-solutions',
+  ];
+
+  const visibleCategories = serviceCategories.filter(cat => visibleIds.includes(cat.id));
+  const dropdownCategories = serviceCategories.filter(cat => !visibleIds.includes(cat.id));
+
+  const activeDropdownCat = dropdownCategories.find(cat => cat.id === activeCategory);
+  const isDropdownActive = !!activeDropdownCat;
+  const moreButtonText = isDropdownActive ? activeDropdownCat.title : "More";
 
   const renderIcon = (iconName) => {
     const IconComponent = Icons[iconName];
@@ -45,14 +61,25 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3.5 mb-10 max-w-5xl mx-auto">
-          {serviceCategories.map((category) => {
+        {/* Transparent backdrop to close dropdown on click outside */}
+        {isDropdownOpen && (
+          <div 
+            className="fixed inset-0 z-20 cursor-default" 
+            onClick={() => setIsDropdownOpen(false)} 
+          />
+        )}
+
+        {/* Category Tabs & Dropdown */}
+        <div className="flex flex-wrap justify-center items-center gap-3.5 mb-10 max-w-5xl mx-auto relative z-30">
+          {visibleCategories.map((category) => {
             const isActive = activeCategory === category.id;
             return (
               <button
                 key={category.id}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  setIsDropdownOpen(false);
+                }}
                 className={`relative px-6 py-3 rounded-full text-xs sm:text-sm font-semibold cursor-pointer transition-colors duration-300 border focus:outline-none select-none ${
                   isActive
                     ? 'text-white border-transparent shadow-lg shadow-accent/25'
@@ -71,6 +98,60 @@ export default function Services() {
               </button>
             );
           })}
+
+          {/* More Dropdown */}
+          <div className="relative inline-block">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsDropdownOpen(!isDropdownOpen);
+              }}
+              className={`relative px-6 py-3 rounded-full text-xs sm:text-sm font-semibold cursor-pointer transition-colors duration-300 border focus:outline-none select-none flex items-center ${
+                isDropdownActive
+                  ? 'text-white border-transparent bg-gradient-to-r from-accent to-rose-500 shadow-lg shadow-accent/25'
+                  : 'text-slate-600 border-slate-200 bg-white hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300/80 shadow-sm'
+              }`}
+            >
+              <span className="relative z-10">{moreButtonText}</span>
+              <Icons.ChevronDown
+                className={`w-4 h-4 ml-1.5 transition-transform duration-300 relative z-10 ${
+                  isDropdownOpen ? 'rotate-180' : 'rotate-0'
+                }`}
+              />
+            </button>
+
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 mt-2.5 w-64 rounded-2xl bg-white border border-slate-200 shadow-xl py-2 z-50 overflow-hidden text-left origin-top-right"
+                >
+                  {dropdownCategories.map((category) => {
+                    const isActive = activeCategory === category.id;
+                    return (
+                      <button
+                        key={category.id}
+                        onClick={() => {
+                          setActiveCategory(category.id);
+                          setIsDropdownOpen(false);
+                        }}
+                        className={`w-full px-4 py-3 text-xs sm:text-sm text-left font-medium transition-colors focus:outline-none ${
+                          isActive
+                            ? 'text-accent bg-rose-50/60 font-semibold'
+                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                        }`}
+                      >
+                        {category.title}
+                      </button>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Active category tagline */}
