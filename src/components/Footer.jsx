@@ -1,5 +1,5 @@
-import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
-import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { Mail, Phone, MapPin, Globe } from 'lucide-react';
+import { FaLinkedinIn, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import logoImg from '../assets/logo.jpeg';
 
@@ -24,10 +24,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: <FaLinkedinIn className="w-3.5 h-3.5" />, href: 'https://linkedin.com' },
-    { name: 'Twitter', icon: <FaTwitter className="w-3.5 h-3.5" />, href: 'https://twitter.com' },
-    { name: 'Facebook', icon: <FaFacebookF className="w-3.5 h-3.5" />, href: 'https://facebook.com' },
     { name: 'Instagram', icon: <FaInstagram className="w-3.5 h-3.5" />, href: 'https://instagram.com' },
+    { name: 'Facebook', icon: <FaFacebookF className="w-3.5 h-3.5" />, href: 'https://facebook.com' },
+    { name: 'LinkedIn', icon: <FaLinkedinIn className="w-3.5 h-3.5" />, href: 'https://linkedin.com' },
     { name: 'YouTube', icon: <FaYoutube className="w-3.5 h-3.5" />, href: 'https://youtube.com' },
   ];
 
@@ -48,7 +47,7 @@ export default function Footer() {
             <a href="#home" className="flex items-center space-x-3 group">
               <img
                 src={logoImg}
-                className="h-10 w-auto rounded-xl object-contain border border-zinc-800 group-hover:border-accent/40 transition-colors"
+                className="h-14 w-auto rounded-xl object-contain border border-zinc-800 group-hover:border-accent/40 transition-colors"
                 alt="AIXPRT Logo"
               />
               <span className="text-xl font-extrabold tracking-tight text-white">
@@ -69,8 +68,8 @@ export default function Footer() {
                   placeholder="your@email.com"
                   className="flex-1 px-4 py-2.5 bg-zinc-800/80 border border-zinc-700 text-white text-xs rounded-l-xl focus:outline-none focus:border-accent/60 placeholder-zinc-500"
                 />
-                <button className="px-4 py-2.5 bg-accent hover:bg-red-700 text-white rounded-r-xl transition-colors">
-                  <ArrowRight className="w-4 h-4" />
+                <button className="px-4 py-2.5 bg-accent hover:bg-accent-hover text-white text-xs font-bold rounded-r-xl transition-colors cursor-pointer">
+                  Subscribe
                 </button>
               </div>
             </div>
@@ -132,30 +131,48 @@ export default function Footer() {
           {/* Col 4: Contact Info */}
           <div className="space-y-6">
             <h3 className="text-sm font-bold uppercase tracking-widest text-white">Contact Info</h3>
-            <ul className="space-y-4">
+             <ul className="space-y-4">
               <li className="flex items-start space-x-3 text-sm">
                 <div className="p-1.5 bg-zinc-800 rounded-lg shrink-0 mt-0.5">
                   <MapPin className="w-3.5 h-3.5 text-accent" />
                 </div>
                 <span className="leading-relaxed text-zinc-400 text-xs">
-                  102 Innovation Hub, Tech City,<br />Karnataka 560001, India
+                  34, 1st floor, Asiatic Arcade, Pokharan Rd Number 1, opp. Thirani School, Jay Jaywanti Society, Vartak Nagar, Thane West, Thane, Maharashtra 400606, India
                 </span>
               </li>
               <li className="flex items-center space-x-3 text-sm">
                 <div className="p-1.5 bg-zinc-800 rounded-lg shrink-0">
                   <Phone className="w-3.5 h-3.5 text-accent" />
                 </div>
-                <a href="tel:+919999999999" className="hover:text-accent transition-colors text-zinc-400 text-xs">
-                  +91 99999 99999
+                <a href="tel:+918291850938" className="hover:text-accent transition-colors text-zinc-400 text-xs">
+                  +91 8291 850 938
                 </a>
               </li>
-              <li className="flex items-center space-x-3 text-sm">
-                <div className="p-1.5 bg-zinc-800 rounded-lg shrink-0">
+              <li className="flex items-start space-x-3 text-sm">
+                <div className="p-1.5 bg-zinc-800 rounded-lg shrink-0 mt-0.5">
                   <Mail className="w-3.5 h-3.5 text-accent" />
                 </div>
-                <a href="mailto:contact@aixprt.com" className="hover:text-accent transition-colors text-zinc-400 text-xs">
-                  contact@aixprt.com
-                </a>
+                <div className="flex flex-col space-y-1">
+                  <a href="mailto:info@aixprt.in" className="hover:text-accent transition-colors text-zinc-400 text-xs">
+                    info@aixprt.in
+                  </a>
+                  <a href="mailto:aixprtin@gmail.com" className="hover:text-accent transition-colors text-zinc-400 text-xs">
+                    aixprtin@gmail.com
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start space-x-3 text-sm">
+                <div className="p-1.5 bg-zinc-800 rounded-lg shrink-0 mt-0.5">
+                  <Globe className="w-3.5 h-3.5 text-accent" />
+                </div>
+                <div className="flex flex-col space-y-1">
+                  <a href="https://www.aixprt.in" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors text-zinc-400 text-xs">
+                    www.aixprt.in
+                  </a>
+                  <a href="https://www.learninghubsol.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors text-zinc-400 text-xs">
+                    www.learninghubsol.com
+                  </a>
+                </div>
               </li>
             </ul>
 

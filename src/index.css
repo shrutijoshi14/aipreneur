@@ -7,16 +7,16 @@
   --font-display: 'Poppins', sans-serif;
 
   /* ── Logo-derived Color Palette ── */
-  --color-primary:       #1A1A1A;  /* Logo charcoal/dark */
-  --color-secondary:     #2D2D2D;  /* Slightly lighter dark */
-  --color-accent:        #CC0000;  /* Logo bold red */
-  --color-accent-hover:  #E60000;  /* Brighter red on hover */
-  --color-highlight:     #FF2222;  /* Vibrant red highlight */
+  --color-primary:       #0F172A;  /* Sleek modern slate primary */
+  --color-secondary:     #1E293B;  /* Slightly lighter slate */
+  --color-accent:        #E11D48;  /* Softer rose-crimson accent */
+  --color-accent-hover:  #F43F5E;  /* Softer rose-500 on hover */
+  --color-highlight:     #FDA4AF;  /* Softer highlight */
   --color-bg:            #FFFFFF;  /* Pure white */
-  --color-section-bg:    #F7F7F7;  /* Near-white section bg */
-  --color-text:          #333333;  /* Dark gray body text */
-  --color-text-light:    #666666;  /* Secondary text */
-  --color-border:        #E5E5E5;  /* Subtle borders */
+  --color-section-bg:    #F8FAFC;  /* Light slate section bg */
+  --color-text:          #334155;  /* Slate body text */
+  --color-text-light:    #64748B;  /* Slate secondary text */
+  --color-border:        #E2E8F0;  /* Slate border */
 }
 
 /* ── Base Layer ── */
@@ -55,9 +55,24 @@
 
 /* ── Custom Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #111111; }
-::-webkit-scrollbar-thumb { background: #CC0000; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #E60000; }
+::-webkit-scrollbar-track { background: #0F172A; }
+::-webkit-scrollbar-thumb { background: #E11D48; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #F43F5E; }
 
 /* ── Selection color ── */
-::selection { background: #CC0000; color: #ffffff; }
+::selection { background: #E11D48; color: #ffffff; }
+
+/* ── Technical Circuit Backdrop Pattern ── */
+.bg-circuits {
+  position: relative;
+}
+.bg-circuits::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg' stroke='%2364748B' stroke-width='0.75' fill='none'%3E%3Cpath d='M0%2C40 H80 L100%2C60 V120 L120%2C140 H200 L220%2C160 V240' /%3E%3Cpath d='M240%2C40 H160 L140%2C60 V100 L120%2C120 H80 L60%2C140 V240' /%3E%3Cpath d='M40%2C0 V80 L60%2C100 H140 L160%2C120 V200 L180%2C220 H240' /%3E%3Ccircle cx='80' cy='40' r='2' fill='%2364748B' fill-opacity='0.5' stroke='none' /%3E%3Ccircle cx='120' cy='140' r='2' fill='%2364748B' fill-opacity='0.5' stroke='none' /%3E%3Ccircle cx='140' cy='60' r='2' fill='%2364748B' fill-opacity='0.5' stroke='none' /%3E%3Ccircle cx='160' cy='120' r='2' fill='%2364748B' fill-opacity='0.5' stroke='none' /%3E%3C/svg%3E");
+  background-repeat: repeat;
+}

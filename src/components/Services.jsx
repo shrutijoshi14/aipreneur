@@ -14,24 +14,21 @@ export default function Services() {
 
   const activeCategoryData = serviceCategories.find(cat => cat.id === activeCategory);
 
-  const tabVariants = {
-    inactive: { scale: 1, backgroundColor: "rgba(250,250,250,1)", color: "#555555" },
-    active: { scale: 1.04, backgroundColor: "#1A1A1A", color: "#FFFFFF" },
-  };
+
 
   const cardContainerVariants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.09 } }
+    show: { opacity: 1, transition: { staggerChildren: 0.08 } }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 22 },
+    hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
   };
 
   return (
-    <section id="services" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-24 bg-gradient-to-b from-white to-slate-50 bg-circuits overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
@@ -40,34 +37,45 @@ export default function Services() {
             <span className="text-xs font-bold text-accent uppercase tracking-widest">Our Capabilities</span>
             <span className="h-px w-8 bg-accent"></span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Comprehensive Tech & Growth Solutions
           </h2>
-          <p className="text-zinc-500 leading-relaxed">
+          <p className="text-slate-500 leading-relaxed text-sm sm:text-base">
             We provide a unified ecosystem of AI integration, software development, communications, and marketing to scale your enterprise operations.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {serviceCategories.map((category) => (
-            <motion.button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              variants={tabVariants}
-              animate={activeCategory === category.id ? "active" : "inactive"}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer border border-zinc-200 shadow-sm focus:outline-none"
-            >
-              {category.title}
-            </motion.button>
-          ))}
+        <div className="flex flex-wrap justify-center gap-3.5 mb-10 max-w-5xl mx-auto">
+          {serviceCategories.map((category) => {
+            const isActive = activeCategory === category.id;
+            return (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`relative px-6 py-3 rounded-full text-xs sm:text-sm font-semibold cursor-pointer transition-colors duration-300 border focus:outline-none select-none ${
+                  isActive
+                    ? 'text-white border-transparent shadow-lg shadow-accent/25'
+                    : 'text-slate-600 border-slate-200 bg-white hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300/80 shadow-sm'
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="activeCategoryBg"
+                    className="absolute inset-0 bg-gradient-to-r from-accent to-rose-500 rounded-full"
+                    style={{ zIndex: 0 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{category.title}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Active category tagline */}
         <div className="max-w-2xl mx-auto text-center mb-10">
-          <p className="text-sm text-zinc-400 italic">
+          <p className="text-xs sm:text-sm text-slate-400 italic font-medium">
             &ldquo;{activeCategoryData?.description}&rdquo;
           </p>
         </div>
@@ -87,19 +95,19 @@ export default function Services() {
                 key={service.title}
                 variants={cardVariants}
                 whileHover={{ y: -8 }}
-                className="p-8 rounded-3xl bg-section-bg border border-zinc-200 hover:border-accent/40 shadow-sm transition-all text-left flex flex-col justify-between group relative overflow-hidden glow-card-hover"
+                className="p-8 rounded-3xl bg-white border border-slate-200/80 hover:border-accent/30 shadow-sm hover:shadow-md transition-all text-left flex flex-col justify-between group relative overflow-hidden"
               >
                 {/* Top red line on hover */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-red-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-rose-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
                 <div className="space-y-4">
-                  <div className="p-3.5 rounded-2xl bg-white border border-zinc-200 text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-300 w-fit">
+                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-accent group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-300 w-fit">
                     {renderIcon(service.icon)}
                   </div>
-                  <h3 className="text-xl font-bold text-primary tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-950 tracking-tight">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-zinc-500 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                     {service.description}
                   </p>
                 </div>
@@ -107,10 +115,9 @@ export default function Services() {
                 <div className="pt-6 mt-auto">
                   <a
                     href="#contact"
-                    className="inline-flex items-center text-xs font-semibold text-primary hover:text-accent space-x-1 group-hover:translate-x-1 transition-transform"
+                    className="inline-flex items-center text-xs font-semibold text-slate-900 hover:text-accent transition-colors"
                   >
-                    <span>Inquire Details</span>
-                    <span className="text-sm">→</span>
+                    Inquire Details
                   </a>
                 </div>
               </motion.div>

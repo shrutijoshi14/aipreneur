@@ -2,7 +2,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 export default function FloatingWhatsApp() {
-  const whatsappNumber = "919999999999"; // Replace with real number
+  const whatsappNumber = "918291850938"; // Real number
   const message = encodeURIComponent("Hi AIXPRT, I want to automate my business operations and would love to book a consultation.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 

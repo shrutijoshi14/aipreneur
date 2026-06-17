@@ -22,26 +22,26 @@
 }
 
 @keyframes red-glow-pulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(204, 0, 0, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(204, 0, 0, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(225, 29, 72, 0.25); }
+  50% { box-shadow: 0 0 45px rgba(225, 29, 72, 0.5); }
 }
 
 .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
 .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
 .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
 .animate-whatsapp-pulse { animation: pulse-whatsapp 2s infinite; }
-.animate-red-glow { animation: red-glow-pulse 3s ease-in-out infinite; }
+.animate-red-glow { animation: red-glow-pulse 3.5s ease-in-out infinite; }
 
 /* Glassmorphism on dark bg */
 .glass-nav {
-  background: rgba(26, 26, 26, 0.85);
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(204, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(225, 29, 72, 0.15);
 }
 
 /* Glow hover for cards */
 .glow-card-hover:hover {
-  box-shadow: 0 0 25px 4px rgba(204, 0, 0, 0.15);
-  border-color: rgba(204, 0, 0, 0.35) !important;
+  box-shadow: 0 0 25px 4px rgba(225, 29, 72, 0.12);
+  border-color: rgba(225, 29, 72, 0.25) !important;
 }
