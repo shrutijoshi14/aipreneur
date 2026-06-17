@@ -114,10 +114,18 @@ export default function Services() {
 
                 <div className="pt-6 mt-auto">
                   <a
-                    href="#contact"
-                    className="inline-flex items-center text-xs font-semibold text-slate-900 hover:text-accent transition-colors"
+                    href={service.link || "#contact"}
+                    target={service.link ? "_blank" : undefined}
+                    rel={service.link ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center text-xs font-semibold text-slate-900 hover:text-accent transition-colors cursor-pointer"
                   >
-                    Inquire Details
+                    {service.link
+                      ? service.link.includes('wa.me')
+                        ? 'View Catalog'
+                        : service.link.includes('aixprt.shop')
+                        ? 'Visit Shop'
+                        : 'Visit Platform'
+                      : 'Inquire Details'}
                   </a>
                 </div>
               </motion.div>
