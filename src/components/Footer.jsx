@@ -2,6 +2,7 @@ import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import logoImg from '../assets/logo.jpeg';
+import apexLogo from '../assets/apex-logo.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -191,6 +192,16 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
           <p>
             &copy; {currentYear} <span className="text-zinc-400 font-semibold">AIXPRT</span> — AI Automation Expert. All rights reserved.
+          </p>
+          <p className="flex items-center gap-2 text-[11px]">
+            <span>Designed &amp; Developed by</span>
+            <a 
+              href="tel:+919869840827" 
+              className="text-zinc-400 hover:text-accent font-semibold transition-colors flex items-center gap-1.5"
+            >
+              <img src={apexLogo} alt="Apex Devs" className="h-5 w-auto object-contain brightness-90 hover:brightness-100 transition-all" />
+              <span>Apex Devs</span>
+            </a>
           </p>
           <div className="flex items-center space-x-6">
             <a href="#privacy" className="hover:text-accent transition-colors">Privacy Policy</a>
